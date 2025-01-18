@@ -1,0 +1,212 @@
+@import "../../responsive.scss";
+
+.listCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 10px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding-bottom: 10px;
+
+  .titleBox {
+    height: 8%;
+    padding: 8px 20px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .Todo {
+    border: 1px solid rgba(250, 195, 255, 1);
+    background-color: rgba(250, 195, 255, 1);
+  }
+
+  .Progress {
+    background: rgba(133, 217, 241, 1);
+    border: 1px solid rgba(234, 236, 240, 1);
+  }
+
+  .Complete {
+    background: rgba(206, 255, 204, 1);
+    border: 1px solid rgba(234, 236, 240, 1);
+  }
+
+  .listAddTaskContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+    padding: 10px 10px;
+
+    .listAddTaskButton {
+      display: flex;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 5px 100px;
+      cursor: pointer;
+
+      @include sm {
+        display: none;
+      }
+    }
+
+    .addTaskForm {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      padding: 10px 0px;
+      align-items: center;
+
+      input {
+        border: none;
+        padding: 8px 10px;
+        border-radius: 10px;
+      }
+
+      .formRowtitle {
+        flex: 4;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          width: 200px;
+          margin: 0 40px;
+        }
+      }
+
+      .formRow {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+
+        input {
+          width: 150px;
+        }
+
+        .dropdownToggle {
+          display: flex;
+          justify-content: center;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          border-radius: 50px;
+          background-color: white;
+          font-size: 18px;
+          font-weight: 600;
+          padding: 5px 10px;
+          width: max-content;
+        }
+
+        .dropdownOptions {
+          display: flex;
+          flex-direction: column;
+          width: max-content;
+          height: max-content;
+          background-color: white;
+          padding: 10px 10px;
+          border-radius: 10px;
+          gap: 10px 0px;
+          font-size: 14px;
+          position: absolute;
+          margin-top: 26px;
+          margin-left: 32px;
+
+          span {
+            padding: 8px 10px;
+          }
+        }
+
+        .active {
+          background-color: rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+        }
+      }
+
+      .formActions {
+        display: flex;
+        gap: 10px 10px;
+        justify-content: center;
+        align-items: center;
+
+        .btn {
+          display: flex;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          padding: 10px 20px;
+          border-radius: 20px;
+          width: 100px;
+          justify-content: center;
+          cursor: pointer;
+        }
+
+        .add {
+          background-color: rgb(111, 26, 98);
+          color: white;
+        }
+      }
+    }
+  }
+
+  .noTasks {
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+  }
+
+  .task {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 12px 20px;
+    align-items: center;
+    text-align: end;
+    font-size: 14px;
+
+    .taskTitle {
+      flex: 4;
+      display: flex;
+      gap: 0px 10px;
+      text-align: left;
+
+      .dragIcon {
+        @include sm {
+          display: none;
+        }
+      }
+
+      label {
+        width: 250px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .cross {
+        text-decoration: line-through;
+        text-decoration-color: black;
+        text-decoration-thickness: 1px;
+      }
+    }
+
+    td {
+      flex: 2;
+      text-align: left;
+
+      @include sm {
+        display: none;
+      }
+
+      .status {
+        width: max-content;
+        background-color: rgba(0, 0, 0, 0.1);
+        padding: 5px 10px;
+        border-radius: 10px;
+      }
+    }
+    td:last-child {
+      text-align: end;
+      @include sm {
+        display: block;
+      }
+    }
+  }
+}

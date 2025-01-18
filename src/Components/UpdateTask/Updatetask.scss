@@ -1,0 +1,189 @@
+@import "../../responsive.scss";
+.bgTheme {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  opacity: 50%;
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  @include sm {
+    z-index: 2;
+  }
+}
+
+.mobileBgTheme {
+  @include sm {
+    background-color: white;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+.updateTask {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  position: fixed;
+  top: 20px;
+  width: 1026px;
+  height: 575px;
+  top: 120px;
+  left: 188px;
+  border-radius: 20px;
+  opacity: 0px;
+
+  @include sm {
+    z-index: 3;
+    left: 0;
+    width: 483px;
+    padding: 10px 0;
+    height: 690px;
+    top: 20px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .top {
+    flex: 1;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    justify-content: flex-end;
+
+    button {
+      display: flex;
+      border: none;
+      background-color: white;
+      margin: 20px 40px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+
+  .mobileBtns {
+    display: none;
+
+    @include sm {
+      display: flex;
+      justify-content: space-evenly;
+      padding: 10px 0px;
+    }
+
+    .mBtns {
+      padding: 10px 70px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+    :hover {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .center {
+    display: flex;
+    flex: 9;
+
+    .bigScreen {
+      display: flex;
+      @include sm {
+        display: none;
+      }
+    }
+
+    .mobilScreen {
+      display: none;
+
+      @include sm {
+        display: block;
+        text-align: left;
+      }
+    }
+
+    .leftContainer {
+      flex: 4;
+      overflow-y: scroll;
+    }
+
+    .rightContainer {
+      flex: 2;
+      background-color: rgba(0, 0, 0, 0.1);
+
+      .updateTitle {
+        display: flex;
+        font-size: 18px;
+        padding: 10px 20px;
+        background-color: white;
+        margin: 1px 0;
+      }
+
+      .msgContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+        padding: 10px 10px;
+        font-size: 12px;
+        text-align: left;
+      }
+    }
+
+    .mobileScreen {
+      display: none;
+    }
+
+    .rightContainer {
+      flex: 2;
+      background-color: rgba(0, 0, 0, 0.1);
+
+      .updateTitle {
+        display: flex;
+        font-size: 18px;
+        padding: 10px 20px;
+        background-color: white;
+        margin: 1px 0;
+      }
+
+      .msgContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 10px 0;
+        padding: 10px 10px;
+        font-size: 12px;
+        text-align: left;
+      }
+    }
+  }
+  .bottom {
+    flex: 1.5;
+    display: flex;
+    gap: 0px 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 0 20px;
+
+    @include sm {
+      padding: 10px 20px;
+    }
+
+    .btn {
+      width: max-content;
+      height: max-content;
+      padding: 10px 20px;
+      color: black;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+    .cancel {
+      background-color: white;
+    }
+
+    .update {
+      background: rgba(123, 25, 132, 1);
+      color: white;
+    }
+  }
+}

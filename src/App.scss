@@ -1,0 +1,19 @@
+@import "./responsive.scss";
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1600px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  @include lg {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  @include sm {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

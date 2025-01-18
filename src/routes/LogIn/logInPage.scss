@@ -1,0 +1,107 @@
+@import "../../responsive.scss";
+
+.logInPageContainer {
+  display: flex;
+  background-color: rgba(249, 249, 255, 1);
+
+  gap: 0 203px;
+
+  .left {
+    .mobBg {
+      display: none;
+      @include sm {
+        display: flex;
+        position: fixed;
+        z-index: 2;
+        background-color: rgba(255, 249, 249, 1);
+      }
+
+      img {
+        object-fit: cover;
+      }
+    }
+
+    .Content {
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-color: transparent;
+
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 370px;
+        text-align: center;
+        align-items: center;
+        gap: 16px 0;
+
+        @include md {
+          position: absolute;
+          z-index: 2;
+          right: 30%;
+        }
+
+        .titleContainer {
+          display: flex;
+          gap: 0 10px;
+          h1 {
+            color: rgba(123, 25, 132, 1);
+          }
+        }
+
+        p {
+          font-size: 14px;
+        }
+
+        button {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          padding: 10px 40px;
+          border-radius: 16px;
+          background-color: rgba(0, 0, 0, 0.9);
+          font-weight: 500;
+          color: white;
+          gap: 0 10px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+
+    @include md {
+      display: none;
+    }
+
+    .bidScreenBg {
+      display: flex;
+
+      .taskImg {
+        position: absolute;
+      }
+
+      .circle {
+        @include lg {
+          right: 0;
+        }
+      }
+
+      .table {
+        z-index: 1;
+        width: 45%;
+        height: 90%;
+        right: 0;
+        top: 7%;
+
+        @include lg {
+          width: 45%;
+          height: 85%;
+        }
+      }
+    }
+  }
+}

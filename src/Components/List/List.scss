@@ -1,0 +1,35 @@
+@import "../../responsive.scss";
+.list {
+  display: flex;
+  flex-direction: column;
+
+  .head {
+    display: flex;
+    width: 100%;
+    padding: 10px 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    text-align: left;
+
+    @include sm {
+      display: none;
+    }
+
+    .task {
+      flex: 4;
+      display: flex;
+      gap: 0px 10px;
+      text-align: left;
+    }
+
+    .taskName {
+      flex: 2;
+      text-align: left;
+    }
+
+    .heading {
+      flex: 3;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}

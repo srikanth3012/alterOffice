@@ -1,0 +1,141 @@
+@import "../responsive.scss";
+.addTaskHoc {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: rgba(0, 0, 0, 0.6);
+  padding: 10px 20px;
+
+  input {
+    display: flex;
+    padding: 12px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgb(250, 233, 252);
+  }
+
+  .description {
+    height: 100px;
+    display: flex;
+    padding: 12px 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgb(250, 233, 252);
+  }
+
+  .details {
+    display: flex;
+    gap: 35px;
+
+    @include sm {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .taskDetails {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      .taskCategory {
+        .taskCategoryItem {
+          padding: 10px 20px;
+          margin: 0px 5px;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          border-radius: 50px;
+          font-weight: 600;
+          font-size: 14px;
+          cursor: pointer;
+
+          @include sm {
+            padding: 8px 16px;
+          }
+        }
+        :hover {
+          background-color: rgba(0, 0, 0, 0.1);
+          // color: white;
+        }
+        .work {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+        .personal {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+    .dueOn {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .time {
+        @include sm {
+          padding: 8px 10px;
+          width: 200px;
+        }
+      }
+    }
+
+    .taskStatus {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      .dropDown {
+        display: flex;
+        padding: 12px 10px;
+        border-radius: 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: rgb(250, 233, 252);
+
+        @include sm {
+          padding: 8px 10px;
+          width: 200px;
+        }
+      }
+    }
+  }
+  .attachement {
+    display: flex;
+    flex-direction: column;
+
+    .attachTitle {
+      padding-top: 10px;
+      font-weight: 600;
+      font-size: 16px;
+      background-color: rgba(0, 0, 0, 0.1);
+      width: max-content;
+      padding: 10px 10px;
+      border-radius: 10px;
+
+      @include sm {
+        background-color: transparent;
+      }
+    }
+
+    .file {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      padding: 12px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: rgb(250, 233, 252);
+      margin: 10px 0px;
+
+      @include sm {
+        padding: 8px 10px;
+      }
+
+      .update {
+        color: blue;
+        text-decoration: underline;
+        border: none;
+        background-color: white;
+        cursor: pointer;
+      }
+    }
+  }
+}

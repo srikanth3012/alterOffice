@@ -1,0 +1,53 @@
+@import "../../responsive.scss";
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  background-color: white;
+  border-radius: 10px;
+  width: 120px;
+  height: 80px;
+  padding: 20px 20px;
+  position: absolute;
+
+  .optionBtn {
+    display: flex;
+    gap: 0 5px;
+    border: none;
+    align-items: center;
+  }
+
+  .delete {
+    color: red;
+  }
+}
+
+.boardOption {
+  background-color: rgb(250, 242, 242);
+  margin-left: 170px;
+  margin-top: 100px;
+
+  .optionBtn {
+    background-color: rgb(250, 242, 242);
+  }
+}
+
+.listOptions {
+  right: 120px;
+  box-shadow: 2px 1px 10px 0px rgba(0, 0, 0, 0.4);
+  @include sm {
+    right: 18px;
+  }
+
+  .optionBtn {
+    background-color: white;
+  }
+}
+
+.taskBtn {
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}

@@ -1,0 +1,64 @@
+@import "../../responsive.scss";
+.multiTaskHandler {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 10px;
+  left: 40%;
+  font-size: 14px;
+
+  @include sm {
+    left: 30px;
+  }
+
+  .wrapper {
+    display: flex;
+    background-color: black;
+    width: max-content;
+    color: white;
+    padding: 10px 40px;
+    border-radius: 10px;
+    gap: 0 50px;
+    align-items: center;
+    @include sm {
+      padding: 10px 20px;
+    }
+
+    button {
+      font-weight: 600;
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 0 5px;
+    }
+
+    .handletasksBtn {
+      display: flex;
+
+      .statusOptions {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        background-color: black;
+        padding: 20px 40px;
+        gap: 10px 0;
+        border-radius: 10px;
+        bottom: 66px;
+        font-size: 14px;
+      }
+
+      .btn {
+        display: flex;
+        padding: 10px 20px;
+        border: 1px solid white;
+        margin-left: 20px;
+        border-radius: 50px;
+      }
+
+      .delete {
+        color: red;
+        background-color: hsla(0, 100%, 40%, 0.5);
+      }
+    }
+  }
+}

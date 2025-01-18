@@ -1,0 +1,99 @@
+@import "../../responsive.scss";
+.boardCard {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  height: auto;
+  background: rgba(241, 241, 241, 1);
+  border: 1px solid rgba(88, 87, 81, 0.07);
+  padding: 10px 10px;
+  border-radius: 10px;
+
+  .titleBox {
+    width: max-content;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: 400;
+    font-size: 14px;
+  }
+
+  .TO-DO {
+    border: 1px solid rgba(250, 195, 255, 1);
+    background-color: rgba(250, 195, 255, 1);
+  }
+
+  .IN-PROGRESS {
+    background: rgba(133, 217, 241, 1);
+    border: 1px solid rgba(234, 236, 240, 1);
+  }
+
+  .COMPLETED {
+    background: rgba(206, 255, 204, 1);
+    border: 1px solid rgba(234, 236, 240, 1);
+  }
+
+  .items {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 0px 18px;
+
+    .item {
+      background-color: white;
+      margin: 5px 0;
+      padding: 10px 16px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 358px;
+      height: 132px;
+      gap: 0px;
+      border-radius: 12px;
+      border: 0.5px 0px 0px 0px;
+      opacity: 0px;
+
+      .topDetails {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0px;
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 22.4px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        align-items: center;
+
+        .taskTitle {
+          width: 250px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-weight: 600;
+        }
+
+        .cross {
+          text-decoration: line-through;
+          text-decoration-color: black;
+          text-decoration-thickness: 1px;
+        }
+      }
+
+      .bottomDetails {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.6);
+
+        .taskCategory {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

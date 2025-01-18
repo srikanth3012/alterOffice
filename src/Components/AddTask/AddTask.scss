@@ -1,0 +1,113 @@
+@import "../../responsive.scss";
+.bgTheme {
+  background-color: black;
+  width: 100vw;
+  height: 100vh;
+  opacity: 50%;
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  @include sm {
+    z-index: 2;
+  }
+}
+
+.mobileBgTheme {
+  @include sm {
+    background-color: white;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.addTaskContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  position: fixed;
+  width: 674px;
+  height: 697px;
+  top: 59px;
+  left: 364px;
+  gap: 0px;
+  border-radius: 20px;
+  z-index: 2;
+  top: 20px;
+
+  @include sm {
+    left: 0;
+    width: 483px;
+    padding: 10px 0;
+    height: 670px;
+    top: 40px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .top {
+    flex: 0.5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding: 0px 20px;
+
+    @include sm {
+      flex: 1.5;
+    }
+    .title {
+      font-weight: 600;
+      @include sm {
+        font-weight: normal;
+        font-size: 22px;
+      }
+    }
+
+    .closeBtn {
+      background-color: white;
+      border: none;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  }
+  .middle {
+    flex: 3;
+  }
+
+  .bottom {
+    flex: 0.5;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.1);
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 10px;
+    border-top: 2px solid rgba(0, 0, 0, 0.1);
+
+    @include sm {
+      padding: 14px 10px;
+    }
+
+    .btn {
+      width: max-content;
+      height: max-content;
+      padding: 10px 20px;
+      border-radius: 50px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+    }
+    :hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .create {
+      background: rgba(123, 25, 132, 1);
+      padding: 10px 25px;
+      color: whitesmoke;
+      border-radius: 50px;
+    }
+  }
+}
