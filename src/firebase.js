@@ -1,7 +1,8 @@
 // src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-
+const apiUrl = process.env.REACT_APP_SECRET_KEY;
+console.log(apiUrl);
 const firebaseConfig = {
   apiKey: "AIzaSyAdlM2ULO_0OMaa49t8fsHQS-SQXlIFPAQ",
   authDomain: "alteroffice-1a3e8.firebaseapp.com",
