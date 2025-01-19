@@ -18,13 +18,13 @@ const MultiTaskHandler = () => {
     (store) => store?.taskBuddySlicer?.multiHandler
   );
 
-  const toDoDataItems = useSelector((store) => store?.taskBuddySlicer?.todo);
+  let toDoDataItems = useSelector((store) => store?.taskBuddySlicer?.todo);
 
-  const inProgressDataItems = useSelector(
+  let inProgressDataItems = useSelector(
     (store) => store?.taskBuddySlicer?.inProgess
   );
 
-  const completeDataItems = useSelector(
+  let completeDataItems = useSelector(
     (store) => store?.taskBuddySlicer?.completed
   );
 
@@ -38,17 +38,31 @@ const MultiTaskHandler = () => {
   const filterOrDelete = (updateSlicer, arr, id) => {
     const updateList = arr.filter((item) => item?.id !== id);
     dispatch(updateSlicer(updateList));
+
+    return updateList;
   };
 
   const taskhandler = (e) => {
     const value = e.target.textContent;
     selectedItems.forEach((element) => {
       if (element?.section.toLowerCase() === "todo") {
-        filterOrDelete(updateItemtoTodo, toDoDataItems, element?.id);
+        toDoDataItems = filterOrDelete(
+          updateItemtoTodo,
+          toDoDataItems,
+          element?.id
+        );
       } else if (element?.section.toLowerCase() === "progress") {
-        filterOrDelete(updateItemInProgress, inProgressDataItems, element?.id);
+        inProgressDataItems = filterOrDelete(
+          updateItemInProgress,
+          inProgressDataItems,
+          element?.id
+        );
       } else {
-        filterOrDelete(updateItemtoCompleted, completeDataItems, element?.id);
+        completeDataItems = filterOrDelete(
+          updateItemtoCompleted,
+          completeDataItems,
+          element?.id
+        );
       }
     });
 

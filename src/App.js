@@ -1,8 +1,6 @@
 import "./App.scss";
+import Layout from "./Layout";
 import store from "./Redux/Store";
-import LogInPage from "./routes/LogIn/logInPage";
-
-import TaskBudddy from "./routes/taskBuddy/taskBuddy";
 import { Provider } from "react-redux";
 
 function App() {
@@ -10,8 +8,7 @@ function App() {
     <div className="app">
       <div className="wrapper">
         <Provider store={store}>
-          <TaskBudddy />
-          {/* <LogInPage /> */}
+          <Layout />
         </Provider>
       </div>
     </div>

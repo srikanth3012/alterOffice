@@ -14,10 +14,10 @@ const Updatetask = ({ addTaskHandler, item }) => {
     time: item?.time,
     taskStatus: item?.taskStatus,
     file: "",
+    message: item?.message,
   });
 
   const createTaskHandle = (e) => {
-    console.log(e.target.value);
     const updatedTask = {
       ...createTask,
       [e.target.name || "taskCategory"]: e.target.value || e.target.textContent,
@@ -27,8 +27,18 @@ const Updatetask = ({ addTaskHandler, item }) => {
   };
 
   const handleUpdate = () => {
+    const date = new Date(); // Get the current date
+    const todayDate = date.toISOString().split("T")[0];
+    const task = {
+      ...createTask,
+      message: [
+        ...createTask?.message,
+        { msg: "You Updated Task on", date: todayDate },
+      ],
+    };
+
     addTaskHandler();
-    editTask("Edit", createTask);
+    editTask("Edit", task);
   };
 
   return (
@@ -54,9 +64,14 @@ const Updatetask = ({ addTaskHandler, item }) => {
           <div className="rightContainer bigScreen">
             <h1 className="updateTitle">Activity</h1>
             <div className="msgContainer">
-              <span>You are Updated</span>
-              <span>You are Updated 2 days ago</span>
-              <span>You are Updated 4 days ago</span>{" "}
+              <div className="msgContainer">
+                {createTask?.message.map((item) => (
+                  <div className="message">
+                    <span>{item?.msg || "message"}</span>
+                    <span>{item?.date}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           {/* //mobieView// */}
@@ -68,9 +83,12 @@ const Updatetask = ({ addTaskHandler, item }) => {
             <div className="rightContainer mobilScreen">
               <h1 className="updateTitle">Activity</h1>
               <div className="msgContainer">
-                <span>You are Updated</span>
-                <span>You are Updated 2 days ago</span>
-                <span>You are Updated 4 days ago</span>{" "}
+                {createTask?.message.map((item) => (
+                  <div className="message">
+                    <span>{item?.msg || "message"}</span>
+                    <span>{item?.date}</span>
+                  </div>
+                ))}
               </div>
             </div>
           )}

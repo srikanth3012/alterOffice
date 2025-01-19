@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import "./addTaskHoc.scss";
 
 const AddTaskHOC = ({ TaskHandle, item }) => {
+  const [fileStatus, setFileStatus] = useState(false);
+
   const [category, setCategory] = useState(
     item?.taskCategory?.toLowerCase() || null
   );
-
-  console.log(item?.taskStatus);
 
   return (
     <div className="addTaskHoc">
@@ -35,19 +35,19 @@ const AddTaskHOC = ({ TaskHandle, item }) => {
             <span
               name="taskCategory"
               value="work"
-              className={`taskCategoryItem ${category === "work" && category}`}
+              className={`taskCategoryItem ${category === "Work" && category}`}
               onClick={TaskHandle}
             >
-              work
+              Work
             </span>
             <span
               name="taskCategory"
               className={`taskCategoryItem ${
-                category === "personal" && category
+                category === "Personal" && category
               }`}
               onClick={TaskHandle}
             >
-              personal
+              Personal
             </span>
           </div>
         </div>
@@ -80,9 +80,25 @@ const AddTaskHOC = ({ TaskHandle, item }) => {
 
       <div className="attachement">
         <span className="attachTitle">Attachment</span>
-        <label className="file  ">
-          Drop your Files here or <button className="update">Update</button>
+        <label className="file">
+          Drop your Files here or{" "}
+          <button
+            className="uploadBtn"
+            onClick={() => setFileStatus(!fileStatus)}
+          >
+            Upload
+          </button>
         </label>
+        {fileStatus && (
+          <div className="uploadContainer">
+            <input
+              name="file"
+              type="file"
+              className="uploadFile"
+              onChange={TaskHandle}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

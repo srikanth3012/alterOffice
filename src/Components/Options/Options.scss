@@ -15,6 +15,11 @@
     gap: 0 5px;
     border: none;
     align-items: center;
+    cursor: pointer;
+
+    label {
+      cursor: pointer;
+    }
   }
 
   .delete {

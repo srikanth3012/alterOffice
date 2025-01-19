@@ -20,6 +20,7 @@ const ListCard = ({ title, data }) => {
     taskStatus: "",
     taskCategory: "",
   });
+  const [check, setCheck] = useState({});
 
   const dispatch = useDispatch();
 
@@ -56,6 +57,19 @@ const ListCard = ({ title, data }) => {
 
   const handleCheckBox = (item) => {
     const updateditem = { ...item, section: title };
+
+    let checkboxList;
+
+    if (check[item?.id]) {
+      checkboxList = { ...check, [item?.id]: false };
+      setCheck(checkboxList);
+    } else {
+      checkboxList = check
+        ? { ...check, [item?.id]: true }
+        : { [item?.id]: true };
+
+      setCheck(checkboxList);
+    }
 
     dispatch(addItemtomultiHandler(updateditem));
   };
@@ -202,6 +216,7 @@ const ListCard = ({ title, data }) => {
                   <div className="taskTitle">
                     <input
                       type="checkbox"
+                      checked={Boolean(check[item?.id])}
                       id={`task-${item.id}`}
                       onClick={() => handleCheckBox(item)}
                     />
@@ -211,7 +226,9 @@ const ListCard = ({ title, data }) => {
                       alt="drag"
                     />
                     <img
-                      className="markIcon"
+                      className={`${
+                        title === "Complete" && "markGreen"
+                      } markIcon`}
                       src="./checkmark.png"
                       alt="drag"
                     />

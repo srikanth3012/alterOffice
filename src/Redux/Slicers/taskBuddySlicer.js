@@ -10,7 +10,8 @@ const TaskBuddySlicer = createSlice({
     inProgess: [...data],
     completed: [...complete],
     multiHandler: [],
-    id: 3,
+    id: 20,
+    user: "",
   },
   reducers: {
     addItemtoTodo: (state, { payload }) => {
@@ -23,7 +24,15 @@ const TaskBuddySlicer = createSlice({
       state.completed.push({ id: ++state.id, ...payload });
     },
     addItemtomultiHandler: (state, { payload }) => {
-      state.multiHandler.push(payload);
+      const status = state.multiHandler.find(
+        (item) => item?.id === payload?.id
+      );
+      if (!status) state.multiHandler.push(payload);
+      else {
+        state.multiHandler = state.multiHandler.filter(
+          (item) => item?.id !== payload?.id
+        );
+      }
     },
 
     updateItemtoTodo: (state, { payload }) => {
@@ -38,6 +47,10 @@ const TaskBuddySlicer = createSlice({
     updateItemtoMultiHandler: (state, { payload }) => {
       state.multiHandler = [];
     },
+
+    addUser: (state, { payload }) => {
+      state.user = payload;
+    },
   },
 });
 
@@ -50,5 +63,6 @@ export const {
   updateItemInProgress,
   updateItemtoCompleted,
   updateItemtoMultiHandler,
+  addUser,
 } = TaskBuddySlicer.actions;
 export default TaskBuddySlicer.reducer;

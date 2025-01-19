@@ -55,10 +55,10 @@
           background-color: rgba(0, 0, 0, 0.1);
           // color: white;
         }
-        .work {
+        .Work {
           background-color: rgba(0, 0, 0, 0.1);
         }
-        .personal {
+        .Personal {
           background-color: rgba(0, 0, 0, 0.1);
         }
       }
@@ -129,12 +129,24 @@
         padding: 8px 10px;
       }
 
-      .update {
+      .uploadBtn {
         color: blue;
         text-decoration: underline;
         border: none;
-        background-color: white;
+        background-color: transparent;
         cursor: pointer;
+        font-size: 16px;
+        padding: 5px 10px;
+      }
+    }
+    .uploadContainer {
+      display: flex;
+      justify-content: center;
+
+      .uploadFile {
+        width: 224px;
+        justify-items: center;
+        padding: 20px 20px;
       }
     }
   }

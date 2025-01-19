@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import AddTask from "../../Components/AddTask/AddTask";
-import Header from "../../Components/Header/header";
 import List from "../../Components/List/list";
 import Board from "../../Components/Board/board";
 import "./taskBuddy.scss";
@@ -39,29 +38,22 @@ const TaskBuddy = () => {
 
     setCategory(value === "reset" ? "Category" : value);
 
-    setTodoData(
-      value === "reset"
-        ? toDoDataItems
-        : toDoDataItems.filter(
-            (item) => item?.taskCategory?.toLowerCase() === value
-          )
-    );
+    const filterData = (data) => {
+      const filterItems =
+        value === "reset"
+          ? toDoDataItems
+          : toDoDataItems.filter(
+              (item) => item?.taskCategory?.toLowerCase() === value
+            );
 
-    setinProgressData(
-      value === "reset"
-        ? inProgressDataItems
-        : inProgressDataItems.filter(
-            (item) => item?.taskCategory?.toLowerCase() === value
-          )
-    );
+      return filterItems;
+    };
 
-    setcompleteData(
-      value === "reset"
-        ? completeDataItems
-        : completeDataItems.filter(
-            (item) => item?.taskCategory?.toLowerCase() === value
-          )
-    );
+    setTodoData(filterData(toDoDataItems));
+
+    setinProgressData(filterData(inProgressDataItems));
+
+    setcompleteData(filterData(completeDataItems));
   };
 
   const handledateFilter = (e) => {
@@ -69,28 +61,22 @@ const TaskBuddy = () => {
     setTime(value);
 
     const date = new Date(); // Get the current date
-    const todyDate = date.toISOString().split("T")[0];
+    const todayDate = date.toISOString().split("T")[0];
 
-    console.log(todyDate, value);
-    value = value == todyDate ? "Today" : value;
+    value = value == todayDate ? "Today" : value;
 
-    setTodoData(
-      value === ""
-        ? toDoDataItems
-        : toDoDataItems.filter((item) => item?.time == value)
-    );
+    const filterData = (data) => {
+      const filterItems =
+        value === "" ? data : data.filter((item) => item?.time == value);
 
-    setinProgressData(
-      value === ""
-        ? inProgressDataItems
-        : inProgressDataItems.filter((item) => item?.time == value)
-    );
+      return filterItems;
+    };
 
-    setcompleteData(
-      value === ""
-        ? completeDataItems
-        : completeDataItems.filter((item) => item?.time == value)
-    );
+    setTodoData(filterData(toDoDataItems));
+
+    setinProgressData(filterData(inProgressDataItems));
+
+    setcompleteData(filterData(completeDataItems));
   };
 
   const resetHandler = () => {
@@ -100,47 +86,34 @@ const TaskBuddy = () => {
     setCategory("Category");
     setTime("dd/mm/yyyy");
   };
+
   const handleSearchText = (e) => {
     const searchText = e.target.value.toLowerCase();
-    setTodoData(
-      searchText
-        ? toDoDataItems.filter(
-            (item) =>
-              item?.taskCategory?.toLowerCase().includes(searchText) ||
-              item?.taskStatus?.toLowerCase().includes(searchText) ||
-              item?.taskTitle.toLowerCase().includes(searchText)
-          )
-        : toDoDataItems
-    );
-    setinProgressData(
-      searchText
-        ? inProgressDataItems.filter(
-            (item) =>
-              item?.taskCategory?.toLowerCase().includes(searchText) ||
-              item?.taskStatus?.toLowerCase().includes(searchText) ||
-              item?.taskTitle.toLowerCase().includes(searchText)
-          )
-        : inProgressDataItems
-    );
 
+    const filterData = (data) => {
+      const filteritem = data.filter(
+        (item) =>
+          item?.taskCategory?.toLowerCase().includes(searchText) ||
+          item?.taskStatus?.toLowerCase().includes(searchText) ||
+          item?.taskTitle.toLowerCase().includes(searchText) ||
+          item?.time.toLowerCase().includes(searchText)
+      );
+      return filteritem;
+    };
+    setTodoData(searchText ? filterData(toDoDataItems) : toDoDataItems);
+    setinProgressData(
+      searchText ? filterData(inProgressDataItems) : inProgressDataItems
+    );
     setcompleteData(
-      searchText
-        ? completeDataItems.filter(
-            (item) =>
-              item?.taskCategory?.toLowerCase().includes(searchText) ||
-              item?.taskStatus?.toLowerCase().includes(searchText) ||
-              item?.taskTitle.toLowerCase().includes(searchText)
-          )
-        : completeDataItems
+      searchText ? filterData(completeDataItems) : completeDataItems
     );
   };
 
   return todoData !== undefined ? (
     <div className="taskBuddy">
-      <Header />
       <div className="section" onClick={sectionHandler}>
         <span className={`${section === "List" && "active"} btn`}>
-          <img alt="list" src="./List.png" />
+          <img alt="list" src="./list.png" />
           List
         </span>
         <span className={`${section === "Board" && "active"} btn`}>
@@ -152,9 +125,16 @@ const TaskBuddy = () => {
         <div className="filter">
           <label htmlFor=""> Filter by:</label>{" "}
           <span className="filteritem" onClick={() => setCategory("")}>
-            {category || "Category"}
+            {category?.toUpperCase() || "Category"}
             <img alt="down" src="./chevron-down.svg" />
           </span>
+          {!category && (
+            <div className="filterOptions" onClick={handleCategoryFilter}>
+              <span data-value="work">Work</span>
+              <span data-value="personal">Personal</span>
+              <span data-value="reset">Reset</span>
+            </div>
+          )}
           <input
             name="time"
             type="date"
@@ -165,13 +145,6 @@ const TaskBuddy = () => {
           <span className="filteritem" onClick={resetHandler}>
             Reset
           </span>
-          {!category && (
-            <div className="filterOptions" onClick={handleCategoryFilter}>
-              <span data-value="work">Work</span>
-              <span data-value="personal">Personal</span>
-              <span data-value="reset">Reset</span>
-            </div>
-          )}
         </div>
         <div className="searchAndAdd">
           <div className="search">
@@ -205,9 +178,16 @@ const TaskBuddy = () => {
           <div className="middle">
             {" "}
             <span className="filteritem" onClick={() => setCategory("")}>
-              {category || "Category"}
+              {category?.toUpperCase() || "CATEGORY"}
               <img alt="down" src="./chevron-down.svg" />
             </span>
+            {!category && (
+              <div className="filterOptions" onClick={handleCategoryFilter}>
+                <span data-value="work">Work</span>
+                <span data-value="personal">Personal</span>
+                <span data-value="reset">Reset</span>
+              </div>
+            )}
             <input
               name="time"
               type="date"
@@ -218,13 +198,6 @@ const TaskBuddy = () => {
             <span className="filteritem" onClick={resetHandler}>
               Reset
             </span>
-            {!category && (
-              <div className="filterOptions" onClick={handleCategoryFilter}>
-                <span data-value="work">Work</span>
-                <span data-value="personal">Personal</span>
-                <span data-value="reset">Reset</span>
-              </div>
-            )}
           </div>
           <div className="bottom">
             <div className="search">
