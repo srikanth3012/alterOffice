@@ -2,19 +2,26 @@
 
 .logInPageContainer {
   display: flex;
-  background-color: rgba(249, 249, 255, 1);
+
+  background: rgba(255, 249, 249, 1);
+
   overflow: hidden;
-  height: 100%;
+
+  height: 100vh;
   gap: 0 203px;
 
   .left {
+    flex: 1;
+    @include lg {
+      flex: 2;
+    }
+
     .mobBg {
       display: none;
       @include md {
         display: flex;
         position: fixed;
         z-index: 2;
-        background-color: rgba(255, 249, 249, 1);
         top: 0;
         left: 0;
         width: 100%;
@@ -28,23 +35,10 @@
     .Content {
       display: flex;
       background-color: transparent;
-      position: relative;
-      margin-top: 60%;
-      @include md {
-        position: absolute;
-        z-index: 2;
-        right: 30%;
-        overflow: hidden;
-        margin-top: 0;
-        top: 38%;
-      }
-      @include sm {
-        position: absolute;
-        z-index: 2;
-        right: 14%;
-        top: 38%;
-        margin-top: 0;
-      }
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+
       .wrapper {
         display: flex;
         flex-direction: column;
@@ -82,34 +76,35 @@
   }
 
   .right {
+    flex: 1;
     display: flex;
 
     @include md {
       display: none;
     }
 
-    .bidScreenBg {
+    .bigScreenBg {
       display: flex;
 
       .taskImg {
         position: absolute;
+        height: 100%;
       }
 
       .circle {
-        @include lg {
-          right: 0;
-        }
+        right: 0;
+        z-index: 2;
       }
 
       .table {
-        z-index: 1;
-        width: 45%;
-        height: 90%;
-        right: 0;
+        position: absolute;
+        z-index: 10;
         top: 7%;
-
+        right: 0;
+        width: 42%;
+        height: 85%;
         @include lg {
-          width: 45%;
+          width: 40%;
           height: 85%;
         }
       }

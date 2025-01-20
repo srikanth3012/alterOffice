@@ -2,14 +2,14 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const apiUrl = process.env.REACT_APP_SECRET_KEY;
-console.log(apiUrl);
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAdlM2ULO_0OMaa49t8fsHQS-SQXlIFPAQ",
-  authDomain: "alteroffice-1a3e8.firebaseapp.com",
-  projectId: "alteroffice-1a3e8",
-  storageBucket: "alteroffice-1a3e8.firebasestorage.app",
-  messagingSenderId: "133400583331",
-  appId: "1:133400583331:web:48faf33728c3bee6987316",
+  apiKey: "AIzaSyDCYGHE04UfBwLlP1HbxzEQv4rDmJRVtaM",
+  authDomain: "alteroffice-1fe39.firebaseapp.com",
+  projectId: "alteroffice-1fe39",
+  storageBucket: "alteroffice-1fe39.firebasestorage.app",
+  messagingSenderId: "789249935826",
+  appId: "1:789249935826:web:2f87637222d99765bd200b",
 };
 
 const app = initializeApp(firebaseConfig);

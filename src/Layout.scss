@@ -1,5 +1,14 @@
 .layout {
   display: flex;
   flex-direction: column;
-  padding: 50px 0;
+  height: 100%;
+
+  .wrapper {
+    .logInContainer {
+      height: 100%;
+    }
+    .mainContainer {
+      display: flex;
+    }
+  }
 }

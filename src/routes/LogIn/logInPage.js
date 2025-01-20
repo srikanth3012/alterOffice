@@ -48,7 +48,7 @@ function LogInPage() {
         </div>
 
         <div className="right">
-          <div className="bidScreenBg">
+          <div className="bigScreenBg">
             <img
               alt="circles_bg.png"
               src="./circles_bg.png"
